@@ -1,0 +1,232 @@
+/* Custom Fonts & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #020617;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Effects */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav {
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Glow Effects */
+.glow-text {
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+/* Particle Canvas */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Typing Animation */
+.typing-cursor {
+    animation: blink 1s step-end infinite;
+    color: #22d3ee;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Floating Animation */
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Scroll Reveal Animation */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skill Bar Animation */
+.skill-bar {
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Glow for Cards */
+.project-card::before,
+.skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(34, 211, 238, 0.15),
+                transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+.project-card:hover::before,
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #22d3ee, #3b82f6, #8b5cf6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #06b6d4, #2563eb, #7c3aed);
+}
+
+/* Navigation Link Hover Effect */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background: linear-gradient(to right, #22d3ee, #3b82f6);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Parallax Background Shapes */
+.parallax-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: move-shape 20s infinite alternate;
+}
+
+@keyframes move-shape {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+    transform-origin: top;
+}
+
+#mobile-menu.hidden {
+    display: none;
+}
+
+#mobile-menu:not(.hidden) {
+    animation: slide-down 0.3s ease;
+}
+
+@keyframes slide-down {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input Focus Effects */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
+}
+
+/* Social Icon Hover */
+.social-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(34, 211, 238, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.social-icon:hover::after {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .glass-nav {
+        background: rgba(2, 6, 23, 0.95);
+    }
+    
+    .reveal-on-scroll {
+        transform: translateY(20px);
+    }
+}
+
+/* Selection Color */
+::selection {
+    background: rgba(34, 211, 238, 0.3);
+    color: white;
+}
+
+/* Smooth Image Loading */
+img {
+    transition: opacity 0.3s;
+}
+
+img[loading] {
+    opacity: 0;
+}
+
+img:not([loading]) {
+    opacity: 1;
+}

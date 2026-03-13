@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aashita Dash | Computer Science & AI Enthusiast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-white overflow-x-hidden font-['Inter']">
+
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent glow-text">
+                        AD.
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link hover:text-cyan-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link hover:text-cyan-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#contact" class="nav-link px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 text-sm font-medium shadow-lg shadow-cyan-500/25">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-cyan-400 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/5 hover:text-cyan-400 transition-all">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/5 hover:text-cyan-400 transition-all">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/5 hover:text-cyan-400 transition-all">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/5 hover:text-cyan-400 transition-all">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/5 hover:text-cyan-400 transition-all">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-5xl mx-auto">
+            <div class="mb-6 inline-block">
+                <span class="px-4 py-2 rounded-full glass-card text-cyan-400 text-sm font-mono border border-cyan-500/30 animate-float">
+                    <i data-lucide="code-2" class="inline w-4 h-4 mr-2"></i>
+                    Welcome to my portfolio
+                </span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+                <span class="block mb-2">
+                    <span id="typing-text-1" class="bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent"></span>
+                    <span class="typing-cursor">|</span>
+                </span>
+                <span class="block text-3xl sm:text-4xl lg:text-5xl font-light text-slate-300 mt-4">
+                    <span id="typing-text-2" class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"></span>
+                </span>
+            </h1>
+            
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed reveal-on-scroll">
+                Passionate about leveraging <span class="text-cyan-400 font-semibold">technology consulting</span>, 
+                <span class="text-purple-400 font-semibold">business process automation</span>, and 
+                <span class="text-blue-400 font-semibold">data-driven systems</span> to create impactful solutions.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center reveal-on-scroll">
+                <a href="#projects" class="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-semibold text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                    <span class="relative z-10 flex items-center">
+                        View My Work
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                <a href="#contact" class="px-8 py-4 glass-card rounded-full font-semibold text-white border border-white/10 hover:border-cyan-500/50 hover:bg-white/5 transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <i data-lucide="mail" class="w-5 h-5 mr-2 text-cyan-400"></i>
+                    Get In Touch
+                </a>
+            </div>
+
+            <div class="mt-16 flex justify-center gap-6 reveal-on-scroll">
+                <a href="https://github.com/AashitaDash" class="social-icon p-3 glass-card rounded-full hover:scale-110 transition-transform duration-300 border border-white/10 hover:border-cyan-500/50 group">
+                    <i data-lucide="github" class="w-6 h-6 text-slate-400 group-hover:text-cyan-400 transition-colors"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/aashita-dash-b4153928a/" class="social-icon p-3 glass-card rounded-full hover:scale-110 transition-transform duration-300 border border-white/10 hover:border-blue-500/50 group">
+                    <i data-lucide="linkedin" class="w-6 h-6 text-slate-400 group-hover:text-blue-400 transition-colors"></i>
+                </a>
+                <a href="https://www.instagram.com/aashiita._/" class="social-icon p-3 glass-card rounded-full hover:scale-110 transition-transform duration-300 border border-white/10 hover:border-pink-500/50 group">
+                    <i data-lucide="instagram" class="w-6 h-6 text-slate-400 group-hover:text-pink-400 transition-colors"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-500 hover:text-cyan-400 transition-colors">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal-on-scroll">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-2xl opacity-30 animate-pulse"></div>
+                        <div class="relative glass-card rounded-2xl p-8 border border-white/10 h-full">
+                            <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-400"></i>
+                                Education
+                            </h3>
+                            <div class="space-y-6">
+                                <div class="border-l-2 border-cyan-500/30 pl-4 hover:border-cyan-400 transition-colors">
+                                    <div class="text-lg font-semibold text-white mb-1">B.Tech in Computer Science and Engineering</div>
+                                    <div class="text-cyan-400 text-sm mb-1">KIIT Deemed University (2023 – Present)</div>
+                                    <div class="text-slate-400 text-sm">CGPA: 8.89</div>
+                                </div>
+                                <div class="border-l-2 border-purple-500/30 pl-4 hover:border-purple-400 transition-colors">
+                                    <div class="text-lg font-semibold text-white mb-1">Higher Secondary (Science)</div>
+                                    <div class="text-purple-400 text-sm mb-1">LRDAV Public School</div>
+                                    <div class="text-slate-400 text-sm">Percentage: 93%</div>
+                                </div>
+                                <div class="border-l-2 border-blue-500/30 pl-4 hover:border-blue-400 transition-colors">
+                                    <div class="text-lg font-semibold text-white mb-1">High School</div>
+                                    <div class="text-blue-400 text-sm mb-1">St. Joseph's Girls' High School</div>
+                                    <div class="text-slate-400 text-sm">Percentage: 95.8%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal-on-scroll">
+                    <h2 class="text-sm font-mono text-cyan-400 mb-2 uppercase tracking-wider">About Me</h2>
+                    <h3 class="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                        Computer Science Undergraduate
+                    </h3>
+                    <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
+                        <p>
+                            Computer Science undergraduate with strong interest in <span class="text-cyan-400">technology consulting</span>, <span class="text-purple-400">data-driven decision making</span>, and <span class="text-blue-400">business process automation</span>.
+                        </p>
+                        <p>
+                            Experienced in building digital platforms, analytics-driven systems, and workflow automation solutions. Skilled in translating technical solutions into practical business outcomes.
+                        </p>
+                        <p>
+                            Published researcher and student leader with strong teamwork and communication skills.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-colors hover:-translate-y-1 duration-300">
+                            <div class="text-3xl font-bold text-cyan-400 mb-1">5+</div>
+                            <div class="text-sm text-slate-400">Projects Completed</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-colors hover:-translate-y-1 duration-300">
+                            <div class="text-3xl font-bold text-purple-400 mb-1">3+</div>
+                            <div class="text-sm text-slate-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-sm font-mono text-cyan-400 mb-2 uppercase tracking-wider">Expertise</h2>
+                <h3 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    Technical Skills
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Card 1: Programming -->
+                <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-cyan-500/50 transition-all duration-500 group reveal-on-scroll hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code" class="w-6 h-6 text-cyan-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-white">Programming</h4>
+                    <p class="text-slate-400 text-sm mb-4">Java, Python, C, JavaScript</p>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                        <div class="skill-bar bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full" style="width: 0%" data-width="90%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2: Core Computer Science -->
+                <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 group reveal-on-scroll hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cpu" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-white">Core Computer Science</h4>
+                    <p class="text-slate-400 text-sm mb-4">Data Structures & Algorithms, OOP, DBMS, Operating Systems, Computer Networks</p>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                        <div class="skill-bar bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full" style="width: 0%" data-width="88%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3: Business Systems -->
+                <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 group reveal-on-scroll hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="workflow" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-white">Business Systems</h4>
+                    <p class="text-slate-400 text-sm mb-4">Web Applications, Dashboards, Workflow Automation, REST APIs</p>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                        <div class="skill-bar bg-gradient-to-r from-blue-500 to-cyan-500 h-full rounded-full" style="width: 0%" data-width="85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 4: Data & Analytics -->
+                <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 group reveal-on-scroll hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="database" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-white">Data & Analytics</h4>
+                    <p class="text-slate-400 text-sm mb-4">SQL, Data Preprocessing, Basic Machine Learning, Text Analytics, Reporting</p>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                        <div class="skill-bar bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full" style="width: 0%" data-width="82%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 5: Tools -->
+                <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-yellow-500/50 transition-all duration-500 group reveal-on-scroll hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wrench" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-white">Tools</h4>
+                    <p class="text-slate-400 text-sm mb-4">Git, GitHub, Linux, Firebase, MS Excel</p>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                        <div class="skill-bar bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full" style="width: 0%" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-sm font-mono text-cyan-400 mb-2 uppercase tracking-wider">Portfolio</h2>
+                <h3 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    Featured Projects
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card group relative glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500 reveal-on-scroll hover:-translate-y-2">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="http://static.photos/technology/640x360/101" alt="Hybrid Book Recommendation System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-mono border border-cyan-500/30">AI/ML</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">Hybrid Book Recommendation System</h4>
+                        <p class="text-slate-400 text-sm mb-4">Hybrid recommendation system combining metadata ranking, TF-IDF similarity, and KMeans clustering. Includes a weighted scoring model using ratings, popularity, and engagement metrics.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Python</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Flask</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Machine Learning</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">TF-IDF</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 text-cyan-400 text-sm font-medium transition-colors border border-white/10 hover:border-cyan-500/30">
+                                View Demo
+                            </a>
+                            <a href="https://github.com/AashitaDash" target="_blank" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-purple-500/20 text-purple-400 text-sm font-medium transition-colors border border-white/10 hover:border-purple-500/30">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card group relative glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all duration-500 reveal-on-scroll hover:-translate-y-2">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="http://static.photos/workspace/640x360/202" alt="Haviaa Maid Services" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-mono border border-purple-500/30">Web Platform</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-purple-400 transition-colors">Haviaa — Maid Services Management Platform</h4>
+                        <p class="text-slate-400 text-sm mb-4">Digital service management platform with booking system, admin dashboard, and workflow automation that reduces manual operational effort by approximately 90%.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Web Platform</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Dashboard System</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Booking System</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 text-cyan-400 text-sm font-medium transition-colors border border-white/10 hover:border-cyan-500/30">
+                                View Demo
+                            </a>
+                            <a href="https://github.com/AashitaDash" target="_blank" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-purple-500/20 text-purple-400 text-sm font-medium transition-colors border border-white/10 hover:border-purple-500/30">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card group relative glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 reveal-on-scroll hover:-translate-y-2">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="http://static.photos/retail/640x360/303" alt="Kirana Onboarding Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-mono border border-blue-500/30">Retail Tech</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">Kirana Onboarding Platform</h4>
+                        <p class="text-slate-400 text-sm mb-4">Retail digitization platform managing inventory, billing, and store operations with dashboards supporting more than 500 product entries per store.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Web Platform</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Inventory System</span>
+                            <span class="px-2 py-1 rounded-md bg-white/5 text-xs text-slate-300">Dashboard</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 text-cyan-400 text-sm font-medium transition-colors border border-white/10 hover:border-cyan-500/30">
+                                View Demo
+                            </a>
+                            <a href="https://github.com/AashitaDash" target="_blank" class="flex-1 text-center py-2 rounded-lg bg-white/5 hover:bg-purple-500/20 text-purple-400 text-sm font-medium transition-colors border border-white/10 hover:border-purple-500/30">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="reveal-on-scroll">
+                    <h2 class="text-sm font-mono text-cyan-400 mb-2 uppercase tracking-wider">Get In Touch</h2>
+                    <h3 class="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                        Let's Work Together
+                    </h3>
+                    <p class="text-slate-400 text-lg mb-8">
+                        Have a project in mind or want to discuss technology consulting opportunities? I'd love to hear from you!
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <a href="mailto:dashaashita@gmail.com" class="flex items-center gap-4 glass-card p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-colors group hover:-translate-y-1 duration-300">
+                            <div class="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-400">Email</div>
+                                <div class="text-white font-medium hover:text-cyan-400 transition-colors">dashaashita@gmail.com</div>
+                            </div>
+                        </a>
+                        
+                        <div class="flex items-center gap-4 glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-colors group">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-400">Location</div>
+                                <div class="text-white font-medium">Available Worldwide</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 glass-card p-4 rounded-xl border border-white/5 hover:border-blue-500/30 transition-colors group">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                                <i data-lucide="calendar" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-400">Availability</div>
+                                <div class="text-white font-medium">Open for Internships & Projects</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll">
+                    <form class="glass-card p-8 rounded-2xl border border-white/10 space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-white/10 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 text-white placeholder-slate-500 transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-white/10 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 text-white placeholder-slate-500 transition-all" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Subject</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-white/10 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 text-white placeholder-slate-500 transition-all" placeholder="Project Inquiry">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-white/10 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 text-white placeholder-slate-500 transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-2">AD.</div>
+                <p class="text-slate-500 text-sm">© 2024 Aashita Dash. All rights reserved.</p>
+            </div>
+            
+            <div class="flex gap-6">
+                <a href="https://github.com/AashitaDash" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors hover:scale-110 duration-300">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/aashita-dash-b4153928a/" target="_blank" class="text-slate-400 hover:text-blue-400 transition-colors hover:scale-110 duration-300">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-purple-400 transition-colors hover:scale-110 duration-300">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-pink-400 transition-colors hover:scale-110 duration-300">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
